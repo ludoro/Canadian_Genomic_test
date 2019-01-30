@@ -6,15 +6,14 @@ input = read.table(file = 'SCONES_test.tsv', sep = '\t', header = TRUE)
 #I do the ratio element by element between last and second to last column
 ratio = input[,5] / input[,4]
 
-#I realize that the ratio may be negative as well, so I take the absolute value in order
+#I realize that the ratio may be negative as well, so I take the absolute value in order to avoid problems of existence
 logratio = log(abs(ratio))
 
-#Plotting the result: 
 
 vector = data.frame(x = input[,2], y = logratio)
 
 # At first I tried using the basic plot function, but the result was terrible because there are way too many points. 
-# I found the library ggplot which seems really mainstream, and I have a lot of alternatives:
+# I found the library ggplot which seems really mainstream. I have a lot of alternatives:
 
 # Plotting all the points with with very high transparency 
 ggplot(vector, aes(x, y)) +
